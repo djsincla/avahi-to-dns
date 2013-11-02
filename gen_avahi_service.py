@@ -68,7 +68,7 @@ class ServiceDiscovery():
 #        
 # Output to file
 #
-        f = open(host.split('.')[0] + ".profile","w")
+        f = open(host.split('.')[0] + ".service","w")
         f.write('''<?xml version="1.0" standalone='no'?><!--*-nxml-*-->\n''')
         f.write('''<!DOCTYPE service-group SYSTEM "avahi-service.dtd">\n''')
 	f.write('<service-group>\n')
