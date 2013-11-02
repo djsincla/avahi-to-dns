@@ -76,11 +76,18 @@ class ServiceDiscovery():
         f.write('  <service>\n')
         f.write('    <type>%s</type>\n' % type)
         f.write('    <port>%s</port>\n' % port)
+        f.write('    <host-name>%s</host-name>\n' % host)
         for each in avahi.txt_array_to_string_array(txt):
-            f.write('    <text-record>%s</text-record>\n' % each)
+            f.write('    <txt-record>%s</txt-record>\n' % each)
         f.write('  </service>\n')
         f.write('</service-group>\n')
         f.close
+        
+        f = open(host.split('.')[0] + ".hosts","w")
+        f.write('# Add the following entry to /etc/avani/hosts\n')
+        f.write('%s   %s' % (address, host))
+        f.close
+
 
     def print_error(self, err):
         # FIXME we should use notifications
